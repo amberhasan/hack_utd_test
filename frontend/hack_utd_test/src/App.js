@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
-class App extends Component {
-  componentDidMount() {
+const App = () => {
+  useEffect(() => {
     axios
       .get("/api/data")
       .then((response) => {
@@ -11,15 +11,13 @@ class App extends Component {
       .catch((error) => {
         console.error(error);
       });
-  }
+  }, []);
 
-  render() {
-    return (
-      <div className="App">
-        <h1>React App</h1>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <h1>React App</h1>
+    </div>
+  );
+};
 
 export default App;
