@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { View, useState, useEffect } from "react";
 import "./App.css";
 import "./MonthlyDebtComponent.css"; // Make sure the path is correct
 import "./HomeFinancesComponent.css"; // Make sure the path is correct
@@ -104,31 +104,30 @@ function App() {
     switch (currentStep) {
       case 1:
         return (
-          <PersonalInfoComponent
-            formData={formData}
-            handleChange={handleChange}
-          />
+          <div>
+            <PersonalInfoComponent
+              formData={formData}
+              handleChange={handleChange}
+            />
+            <UserIncomeCreditScore
+              formData={formData}
+              handleChange={handleChange}
+            />
+          </div>
         );
+
       case 2:
         return (
-          <UserIncomeCreditScore
-            formData={formData}
-            handleChange={handleChange}
-          />
-        );
-      case 3:
-        return (
-          <MonthlyDebtComponent
-            formData={formData}
-            handleChange={handleChange}
-          />
-        );
-      case 4:
-        return (
-          <HomeFinancesComponent
-            formData={formData}
-            handleChange={handleChange}
-          />
+          <div>
+            <MonthlyDebtComponent
+              formData={formData}
+              handleChange={handleChange}
+            />
+            <HomeFinancesComponent
+              formData={formData}
+              handleChange={handleChange}
+            />
+          </div>
         );
       default:
         return null;

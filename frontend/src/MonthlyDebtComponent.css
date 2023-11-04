@@ -1,28 +1,38 @@
 /* MonthlyDebtComponent.css */
 .debt-container {
-  margin: 20px 0;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
 
-.debt-input {
-  margin-bottom: 10px;
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: calc(100% - 22px); /* input padding and border */
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-.debt-input:focus {
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.input-field:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
 }
 
-.debt-input::placeholder {
-  color: #bbb;
+.input-field::placeholder {
+  font-style: italic;
+  color: #888;
 }
-
-/* Add more styles as needed */
