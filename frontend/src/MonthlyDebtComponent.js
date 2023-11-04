@@ -1,13 +1,13 @@
 import React from "react";
 
-const MonthlyDebtComponent = ({ monthlyDebtData, handleChange }) => {
+const MonthlyDebtComponent = ({ formData, handleChange }) => {
   return (
     <div>
       <input
         type="number"
         name="carPayment"
         placeholder="Monthly Car Payment"
-        value={monthlyDebtData.carPayment}
+        value={formData.carPayment}
         onChange={handleChange}
         required
       />
@@ -15,7 +15,7 @@ const MonthlyDebtComponent = ({ monthlyDebtData, handleChange }) => {
         type="number"
         name="studentLoanPayment"
         placeholder="Monthly Student Loan Payment"
-        value={monthlyDebtData.studentLoanPayment}
+        value={formData.studentLoanPayment}
         onChange={handleChange}
         required
       />
@@ -23,7 +23,7 @@ const MonthlyDebtComponent = ({ monthlyDebtData, handleChange }) => {
         type="number"
         name="creditCardPayment"
         placeholder="Monthly Credit Card Payment"
-        value={monthlyDebtData.creditCardPayment}
+        value={formData.creditCardPayment}
         onChange={handleChange}
         required
       />

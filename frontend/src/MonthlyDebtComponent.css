@@ -1,0 +1,28 @@
+/* MonthlyDebtComponent.css */
+.debt-container {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.debt-input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 22px); /* input padding and border */
+}
+
+.debt-input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.debt-input::placeholder {
+  color: #bbb;
+}
+
+/* Add more styles as needed */

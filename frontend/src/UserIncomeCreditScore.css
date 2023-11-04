@@ -1,0 +1,68 @@
+/* UserIncomeCreditScore.css */
+.income-credit-container {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.range-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.range-input {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.range-value {
+  min-width: 50px;
+  text-align: center;
+  color: #5a5a5a;
+}
+
+.label {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Enhances the look of the range slider */
+.range-input input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.range-input input[type="range"]:hover {
+  opacity: 1;
+}
+
+.range-input input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+.range-input input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}

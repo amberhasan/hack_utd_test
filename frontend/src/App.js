@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "./MonthlyDebtComponent.css"; // Make sure the path is correct
+import "./HomeFinancesComponent.css"; // Make sure the path is correct
+import "./PersonalInfoComponent.css"; // Make sure the path is correct
+import "./UserIncomeCreditScore.css"; // Make sure the path is correct
 import PersonalInfoComponent from "./PersonalInfoComponent"; // Adjust the path as necessary
 import MonthlyDebtComponent from "./MonthlyDebtComponent";
 import HomeFinancesComponent from "./HomeFinancesComponent";
@@ -82,7 +86,7 @@ function App() {
         />
 
         <MonthlyDebtComponent
-          monthlyDebtData={formData} // Ensure formData has the correct structure
+          formData={formData} // Ensure formData has the correct structure
           handleChange={handleChange}
         />
         <HomeFinancesComponent

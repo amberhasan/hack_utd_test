@@ -1,0 +1,42 @@
+/* HomeFinancesComponent.css */
+.home-finances-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.input-field::placeholder {
+  color: #888;
+}
+
+/* Style for larger screens */
+@media (min-width: 768px) {
+  .home-finances-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .input-group {
+    flex-basis: 48%;
+  }
+}
