@@ -69,7 +69,7 @@ function App() {
   return (
     <div className="App">
       <h1>Home Buying Readiness Form</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
           name="firstName"
