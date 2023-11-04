@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 
 const connectToMongoDB = async () => {
   try {
-    // Replace '<db_url>' with the actual MongoDB connection URL
+    // Replace '<db_url>' with the actual MongoDB connection URL and include the database name
     const DB_URL =
-      "mongodb+srv://amberhasan:Testing123!!@cluster0.qvymich.mongodb.net/";
+      "mongodb+srv://amberhasan:Testing123!!@cluster0.qvymich.mongodb.net/sample_airbnb";
     // Connect to the MongoDB database
     await mongoose.connect(DB_URL);
 
