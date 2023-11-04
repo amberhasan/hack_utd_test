@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import PersonalInfoComponent from "./PersonalInfoComponent"; // Adjust the path as necessary
 
 function App() {
   // State hooks for form inputs
@@ -70,38 +71,8 @@ function App() {
     <div className="App">
       <h1>Home Buying Readiness Form</h1>
       <form onSubmit={handleSubmit} className="form">
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="age"
-          placeholder="Age"
-          value={formData.age}
-          onChange={handleChange}
-          required
-        />
+        <PersonalInfoComponent />
+
         <label>
           Credit Score
           <input
