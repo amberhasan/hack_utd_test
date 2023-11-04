@@ -5,8 +5,10 @@ import "./PersonalInfoComponent.css"; // Ensure the path to the CSS file is corr
 const PersonalInfoComponent = (props) => {
   // If you need to manage local state or handle changes, use useState and other hooks here
   const [personalData, setPersonalData] = useState({
+    firstName: "",
     lastName: "",
-    // ...other financial fields
+    email: "",
+    age: "",
   });
 
   const handleChange = (event) => {
@@ -20,31 +22,33 @@ const PersonalInfoComponent = (props) => {
 
   return (
     <div className="personal-info-container">
-      <div className="personal-info-field">
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={personalData.firstName}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="personal-info-field">
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={personalData.lastName}
-          onChange={handleChange}
-          required
-        />
+      <div className="name-container">
+        <div className="personal-info-field">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="👤 First Name"
+            value={personalData.firstName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="personal-info-field">
+          <input
+            type="text"
+            name="lastName"
+            placeholder="👤 Last Name"
+            value={personalData.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
       </div>
       <div className="personal-info-field">
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="📧 Email"
           value={personalData.email}
           onChange={handleChange}
           required
@@ -54,7 +58,7 @@ const PersonalInfoComponent = (props) => {
         <input
           type="number"
           name="age"
-          placeholder="Age"
+          placeholder="🎂 Age"
           value={personalData.age}
           onChange={handleChange}
           required

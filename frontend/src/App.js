@@ -31,7 +31,7 @@ function App() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
 
     const creditScore = parseInt(formData.creditScore);
     const homeValue = parseFloat(formData.homeValue);
@@ -73,27 +73,84 @@ function App() {
     alert("You are approved!");
   };
 
-  // Render the form
+  // New state for tracking the current form step
+  const [currentStep, setCurrentStep] = useState(1);
+
+  // Total number of steps
+  const totalSteps = 4;
+
+  // Function to move to next form step
+  const nextStep = (e) => {
+    // Prevent default form action if the event object is provided
+    if (e) e.preventDefault();
+
+    if (currentStep >= totalSteps) {
+      // You can handle the final submit here if you want
+      handleSubmit(e); // Ensure that 'e' is passed if it's available
+    } else {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  // Function to move to previous form step
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  // Conditional rendering based on the current step
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <PersonalInfoComponent
+            formData={formData}
+            handleChange={handleChange}
+          />
+        );
+      case 2:
+        return (
+          <UserIncomeCreditScore
+            formData={formData}
+            handleChange={handleChange}
+          />
+        );
+      case 3:
+        return (
+          <MonthlyDebtComponent
+            formData={formData}
+            handleChange={handleChange}
+          />
+        );
+      case 4:
+        return (
+          <HomeFinancesComponent
+            formData={formData}
+            handleChange={handleChange}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="App">
       <h1>Home Buying Readiness Form</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <PersonalInfoComponent />
+      <form onSubmit={(e) => e.preventDefault()} className="form">
+        {/* Render the current step */}
+        {renderStep()}
 
-        <UserIncomeCreditScore
-          formData={formData}
-          handleChange={handleChange}
-        />
-
-        <MonthlyDebtComponent
-          formData={formData} // Ensure formData has the correct structure
-          handleChange={handleChange}
-        />
-        <HomeFinancesComponent
-          formData={formData}
-          handleChange={handleChange}
-        />
-        <button type="submit">Submit</button>
+        {/* Render the navigation buttons */}
+        <div className="buttons-container">
+          <button className="next-prev-buttons" onClick={prevStep}>
+            &lt;
+          </button>
+          <button className="next-prev-buttons" onClick={nextStep}>
+            &gt;
+          </button>
+        </div>
       </form>
     </div>
   );
