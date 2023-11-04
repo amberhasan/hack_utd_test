@@ -102,22 +102,30 @@ function App() {
           onChange={handleChange}
           required
         />
-        <input
-          type="text"
-          name="creditScore"
-          placeholder="Credit Score"
-          value={formData.creditScore}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="monthlyIncome"
-          placeholder="Monthly Income (Gross)"
-          value={formData.monthlyIncome}
-          onChange={handleChange}
-          required
-        />
+        <label>
+          Credit Score
+          <input
+            type="range"
+            name="creditScore"
+            min="300"
+            max="850"
+            value={formData.creditScore}
+            onChange={handleChange}
+          />
+          {formData.creditScore}
+        </label>
+        <label>
+          Monthly Income (Gross)
+          <input
+            type="range"
+            name="monthlyIncome"
+            min="0"
+            max="100000"
+            value={formData.monthlyIncome}
+            onChange={handleChange}
+          />
+          {formData.creditScore}
+        </label>
         <input
           type="number"
           name="carPayment"
