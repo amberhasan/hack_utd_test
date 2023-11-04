@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import PersonalInfoComponent from "./PersonalInfoComponent"; // Adjust the path as necessary
+import MonthlyDebtComponent from "./MonthlyDebtComponent";
+import HomeFinancesComponent from "./HomeFinancesComponent";
+import UserIncomeCreditScore from "./UserIncomeCreditScore";
 
 function App() {
   // State hooks for form inputs
@@ -73,69 +76,18 @@ function App() {
       <form onSubmit={handleSubmit} className="form">
         <PersonalInfoComponent />
 
-        <label>
-          Credit Score
-          <input
-            type="range"
-            name="creditScore"
-            min="300"
-            max="850"
-            value={formData.creditScore}
-            onChange={handleChange}
-          />
-          {formData.creditScore}
-        </label>
-        <label>
-          Monthly Income (Gross)
-          <input
-            type="range"
-            name="monthlyIncome"
-            min="0"
-            max="100000"
-            value={formData.monthlyIncome}
-            onChange={handleChange}
-          />
-          {formData.creditScore}
-        </label>
-        <input
-          type="number"
-          name="carPayment"
-          placeholder="Monthly Car Payment"
-          value={formData.carPayment}
-          onChange={handleChange}
-          required
+        <UserIncomeCreditScore
+          formData={formData}
+          handleChange={handleChange}
         />
-        <input
-          type="number"
-          name="studentLoanPayment"
-          placeholder="Monthly Student Loan Payment"
-          value={formData.studentLoanPayment}
-          onChange={handleChange}
-          required
+
+        <MonthlyDebtComponent
+          monthlyDebtData={formData} // Ensure formData has the correct structure
+          handleChange={handleChange}
         />
-        <input
-          type="number"
-          name="creditCardPayment"
-          placeholder="Monthly Credit Card Payment"
-          value={formData.creditCardPayment}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="homeValue"
-          placeholder="Home Appraised Value"
-          value={formData.homeValue}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="downPayment"
-          placeholder="Down Payment"
-          value={formData.downPayment}
-          onChange={handleChange}
-          required
+        <HomeFinancesComponent
+          formData={formData}
+          handleChange={handleChange}
         />
         <button type="submit">Submit</button>
       </form>

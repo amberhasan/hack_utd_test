@@ -1,5 +1,6 @@
 // PersonalInfoComponent.jsx
 import React, { useState } from "react";
+import "./PersonalInfoComponent.css"; // Ensure the path to the CSS file is correct
 
 const PersonalInfoComponent = (props) => {
   // If you need to manage local state or handle changes, use useState and other hooks here
@@ -18,39 +19,47 @@ const PersonalInfoComponent = (props) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        value={personalData.firstName}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        value={personalData.lastName}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={personalData.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="age"
-        placeholder="Age"
-        value={personalData.age}
-        onChange={handleChange}
-        required
-      />
+    <div className="personal-info-container">
+      <div className="personal-info-field">
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={personalData.firstName}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="personal-info-field">
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={personalData.lastName}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="personal-info-field">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={personalData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="personal-info-field">
+        <input
+          type="number"
+          name="age"
+          placeholder="Age"
+          value={personalData.age}
+          onChange={handleChange}
+          required
+        />
+      </div>
     </div>
   );
 };
