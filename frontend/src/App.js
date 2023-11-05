@@ -52,6 +52,11 @@ function App() {
     monthlyMortgagePayment: 0,
   });
 
+  const [mortgageDecision, setMortgageDecision] = useState({
+    canBuyHouse: false,
+    message: "",
+  });
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -67,7 +72,11 @@ function App() {
         "http://localhost:3001/api/submitData",
         { ...formData, ltv, dti, fedti, canBuyHouse } // TODO - add to schema, Include the calculated values if needed for the backend
       );
-      alert(JSON.stringify(`${message}`));
+      setMortgageDecision({
+        canBuyHouse: response.data.canBuyHouse,
+        message: response.data.message,
+      });
+      setCurrentStep(currentStep + 1); // Move to the mortgage decision step
     } catch (error) {
       console.error("Error:", error);
       alert("Error saving data");
@@ -150,6 +159,14 @@ function App() {
             </div>
           </div>
         );
+      case 3:
+        return (
+          <MortgageDecisionLetter
+            canBuyHouse={mortgageDecision.canBuyHouse}
+            message={mortgageDecision.message}
+          />
+        );
+
       default:
         return <div>Hello</div>;
     }
