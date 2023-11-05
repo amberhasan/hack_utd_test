@@ -14,8 +14,21 @@ import MortgageDecisionLetter from "./MortgageDecisionLetter";
 import DataGraph from "./DataGraph";
 
 function App() {
-  // State hooks for form inputs
+  const [activeSegment, setActiveSegment] = useState("form"); // 'form' or 'discover'
 
+  const handleSegmentChange = (segment) => {
+    setActiveSegment(segment);
+  };
+
+  const renderContent = () => {
+    if (activeSegment === "form") {
+      // Render form steps
+      return renderStep();
+    } else if (activeSegment === "discover") {
+      // Render Discover segment with the graph
+      return <div>{/* Graph Component */}</div>;
+    }
+  };
   const [listings, setListings] = useState([]);
   //GET works
   useEffect(() => {
@@ -180,6 +193,24 @@ function App() {
   return (
     <div className="App">
       <h1>Home Buying Readiness Form</h1>
+      <div className="segmented-buttons">
+        <button
+          className={`segment-button ${
+            activeSegment === "form" ? "active" : ""
+          }`}
+          onClick={() => handleSegmentChange("form")}
+        >
+          Form
+        </button>
+        <button
+          className={`segment-button ${
+            activeSegment === "discover" ? "active" : ""
+          }`}
+          onClick={() => handleSegmentChange("discover")}
+        >
+          Discover
+        </button>
+      </div>{" "}
       <form onSubmit={handleSubmit} className="form">
         {renderStep()}
       </form>
