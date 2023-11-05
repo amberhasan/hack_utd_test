@@ -26,7 +26,7 @@ function App() {
       return renderStep();
     } else if (activeSegment === "discover") {
       // Render Discover segment with the graph
-      return <div>{/* Graph Component */}</div>;
+      return <DataGraph />;
     }
   };
   const [listings, setListings] = useState([]);
@@ -127,7 +127,6 @@ function App() {
       case 1:
         return (
           <div>
-            <DataGraph />;
             <PersonalInfoComponent
               formData={formData}
               handleChange={handleChange}
@@ -212,7 +211,7 @@ function App() {
         </button>
       </div>{" "}
       <form onSubmit={handleSubmit} className="form">
-        {renderStep()}
+        {renderContent()}
       </form>
     </div>
   );
