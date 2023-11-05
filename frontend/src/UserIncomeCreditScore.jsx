@@ -19,18 +19,14 @@ const UserIncomeCreditScore = ({ formData, handleChange }) => {
         </label>
       </div>
       <div>
-        <label>
-          Monthly Income (Gross)
-          <input
-            type="range"
-            name="monthlyIncome"
-            min="0"
-            max="100000"
-            value={formData.monthlyIncome}
-            onChange={handleChange}
-          />
-          {formData.monthlyIncome}
-        </label>
+        <input
+          type="text"
+          name="monthlyIncome"
+          placeholder="💸 Monthly Income"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
       </div>
     </div>
   );

@@ -2,41 +2,26 @@
 .home-finances-container {
   display: flex;
   flex-direction: column;
+  gap: 20px; /* Creates consistent space between children */
+  padding: 10px; /* Uniform padding around the container */
   margin-bottom: 20px;
 }
-
-.input-group {
-  margin-bottom: 10px;
-}
-
-.input-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
 .input-field {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  max-width: calc(
+    50% - 20px
+  ); /* Ensures that each input group's width and the gap does not exceed 100% */
 }
-
-.input-field::placeholder {
-  color: #888;
-}
-
 /* Style for larger screens */
 @media (min-width: 768px) {
   .home-finances-container {
     flex-direction: row;
     justify-content: space-between;
+    gap: 20px; /* Adjusts the space between input groups on larger screens */
+    margin-bottom: 20px;
+    padding: 0; /* Removes padding on larger screens if not needed */
   }
 
   .input-group {
-    flex-basis: 48%;
+    flex-basis: 48%; /* Ensures that each input group takes up less than half of the container's width */
   }
 }

@@ -7,14 +7,14 @@ const HomeFinancesComponent = ({ formData, handleChange }) => {
     <div className="home-finances-container">
       <div className="input-group">
         <label htmlFor="homeAppraisedValue" className="input-label">
-          🏠 Home Appraised Value
+          Home Appraised Value
         </label>
         <input
           className="input-field"
           type="number"
           id="homeAppraisedValue"
           name="homeAppraisedValue"
-          placeholder="e.g., 300000"
+          placeholder="300000"
           value={formData.homeAppraisedValue}
           onChange={handleChange}
           required
@@ -29,7 +29,7 @@ const HomeFinancesComponent = ({ formData, handleChange }) => {
           type="number"
           id="downPaymentAmount"
           name="downPaymentAmount"
-          placeholder="e.g., 60000"
+          placeholder="60000"
           value={formData.downPaymentAmount}
           onChange={handleChange}
           required

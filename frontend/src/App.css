@@ -1,4 +1,52 @@
 /* Additional styles for cards and buttons in App.css */
+/* Base styles for segmented buttons */
+.segment-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  border: 2px solid transparent; /* Adjust the border to match your design */
+  background-color: #f7f7f7;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Styles for the active state */
+.segment-button.active {
+  color: #fff;
+  background-color: #007bff; /* You can use your primary color here */
+  border-color: #007bff; /* Match the border color with the background for a solid look */
+}
+
+/* Hover styles to give feedback on hover */
+.segment-button:hover {
+  background-color: #e7e7e7; /* A lighter shade for hover state */
+}
+
+/* This ensures that there's no space between the buttons and they look joined */
+.segmented-buttons {
+  justify-content: center;
+
+  display: flex;
+  border-radius: 4px; /* Optional: Rounded corners for the button group */
+  overflow: hidden; /* This ensures that individual button borders do not appear outside the group */
+}
+
+/* This ensures that buttons appear joined with no space in between */
+.segmented-buttons .segment-button:not(:last-child) {
+  border-right: 1px solid #ccc; /* Add a subtle border between buttons if needed */
+}
+
+/* Adjustments if you have a border around the button group */
+.segmented-buttons {
+  border: 1px solid #ccc; /* Border color should match the separator color */
+}
+
+/* Optional: Adding a box-shadow for depth (and remove border if you prefer this) */
+.segmented-buttons {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none; /* Remove if using box-shadow */
+}
 
 .card {
   background: #fff;
