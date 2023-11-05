@@ -35,16 +35,16 @@ const MonthlyDebtComponent = ({ formData, handleChange }) => {
         />
       </div>
       <div className="input-group">
-        <label htmlFor="creditCardPayment" className="input-label">
+        <label htmlFor="monthlyCreditCardPayment" className="input-label">
           💳 Credit Card Payment
         </label>
         <input
           className="input-field"
           type="number"
-          id="creditCardPayment"
-          name="creditCardPayment"
+          id="monthlyCreditCardPayment"
+          name="monthlyCreditCardPayment"
           placeholder="e.g., 200"
-          value={formData.creditCardPayment}
+          value={formData.monthlyCreditCardPayment}
           onChange={handleChange}
           required
         />

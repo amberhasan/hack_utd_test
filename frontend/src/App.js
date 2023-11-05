@@ -39,15 +39,15 @@ function App() {
     firstName: "",
     lastName: "",
     email: "",
-    age: "",
-    creditScore: "",
-    monthlyIncome: "",
-    carPayment: "",
-    studentLoanPayment: "",
-    creditCardPayment: "",
-    homeValue: "",
-    downPayment: "",
-    mortgagePayment: "",
+    age: 0,
+    creditScore: 0,
+    grossMonthlyIncome: 0,
+    monthlyCarPayment: 0,
+    monthlyStudentLoanPayment: 0,
+    monthlyCreditCardPayment: 0,
+    homeAppraisedValue: 0,
+    downPaymentAmount: 0,
+    monthlyMortgagePayment: 0,
   });
 
   const handleChange = (e) => {
@@ -57,41 +57,30 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const firstName = formData.firstName;
+    const lastName = formData.lastName;
+    const email = formData.email;
+    const age = parseInt(formData.age);
+    const monthlyCarPayment = parseFloat(formData.carPayment);
+    const monthlyStudentLoanPayment = parseFloat(formData.studentLoanPayment);
+    const monthlyMortgagePayment = parseFloat(formData.mortgagePayment);
     const creditScore = parseInt(formData.creditScore);
-    const homeValue = parseFloat(formData.homeValue);
-    const downPayment = parseFloat(formData.downPayment);
-    const monthlyIncome = parseFloat(formData.monthlyIncome);
-    const carPayment = parseFloat(formData.carPayment);
-    const studentLoanPayment = parseFloat(formData.studentLoanPayment);
-    const creditCardPayment = parseFloat(formData.creditCardPayment);
-    const mortgagePayment = parseFloat(formData.mortgagePayment);
+    const grossMonthlyIncome = parseFloat(formData.monthlyIncome);
+    const monthlyCreditCardPayment = parseFloat(formData.creditCardPayment);
+    const homeAppraisedValue = parseFloat(formData.homeAppraisedValue);
+    const downPaymentAmount = parseFloat(formData.downPaymentAmount);
 
-    const ltv = ((homeValue - downPayment) / homeValue) * 100;
+    const ltv =
+      ((homeAppraisedValue - downPaymentAmount) / downPaymentAmount) * 100;
     const dti =
-      ((carPayment + studentLoanPayment + mortgagePayment + creditCardPayment) /
-        monthlyIncome) *
+      ((monthlyCarPayment +
+        monthlyStudentLoanPayment +
+        monthlyMortgagePayment +
+        monthlyCreditCardPayment) /
+        grossMonthlyIncome) *
       100;
-    const fedti = (mortgagePayment / monthlyIncome) * 100;
-
-    if (creditScore < 640) {
-      alert("Credit score must be 640 or higher.");
-      return;
-    }
-
-    if (ltv >= 80) {
-      alert("LTV must be under 80%.");
-      return;
-    }
-
-    if (dti >= 36) {
-      alert("DTI must be under 36%.");
-      return;
-    }
-
-    if (fedti >= 28) {
-      alert("FEDTI must be under 28%.");
-      return;
-    }
+    const fedti = (monthlyMortgagePayment / grossMonthlyIncome) * 100;
+    const isApproved = creditScore >= 640 && ltv < 80 && dti < 36 && fedti < 28;
 
     try {
       const response = await Axios.post(
@@ -99,7 +88,7 @@ function App() {
         formData
       ); // Updated URL
       if (response.status === 200) {
-        alert("Data saved successfully");
+        alert(JSON.stringify(formData, null, 2));
       } else {
         alert("Error saving data");
       }
@@ -149,7 +138,11 @@ function App() {
               handleChange={handleChange}
             />
             <div className="buttons-container">
-              <button className="next-prev-buttons" onClick={nextStep}>
+              <button
+                className="next-prev-buttons"
+                type="button"
+                onClick={nextStep}
+              >
                 Next
               </button>
             </div>
@@ -168,7 +161,11 @@ function App() {
               handleChange={handleChange}
             />
             <div className="buttons-container">
-              <button className="next-prev-buttons" onClick={prevStep}>
+              <button
+                className="next-prev-buttons"
+                type="button"
+                onClick={prevStep}
+              >
                 Back
               </button>
               <button type="submit" className="submit-button">

@@ -16,7 +16,8 @@ app.use(bodyParser.json());
 // Define a Mongoose schema for the users collection
 const userSchema = new mongoose.Schema({
   id: String,
-  name: String,
+  firstName: String,
+  lastName: String,
   email: String,
   age: Number,
   monthlyCarPayment: Number,
@@ -44,7 +45,21 @@ app.get("/users", async (req, res) => {
 });
 
 app.post("/api/submitData", async (req, res) => {
-  const newData = new User(req.body);
+  // const newData = new User(req.body);
+  const newData = new User({
+    firstName: "Jane",
+    lastName: "Doe",
+    email: "jane.doe@example.com",
+    age: 30,
+    monthlyCarPayment: 300,
+    monthlyStudentLoanPayment: 200,
+    creditScore: 750,
+    grossMonthlyIncome: 5000,
+    monthlyCreditCardPayment: 100,
+    homeAppraisedValue: 250000,
+    downPaymentAmount: 50000,
+  });
+
   try {
     await newData.save();
     res.json({ message: "Data saved successfully" });
