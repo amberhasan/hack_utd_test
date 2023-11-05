@@ -77,21 +77,7 @@ app.post("/api/send-email", (req, res) => {
 });
 //http://localhost:3001/api/submitData
 app.post("/api/submitData", async (req, res) => {
-  // const newData = new User(req.body);
-  const newData = new User({
-    firstName: "Jane",
-    lastName: "Doe",
-    email: "jane.doe@example.com",
-    age: 30,
-    monthlyCarPayment: 300,
-    monthlyStudentLoanPayment: 200,
-    creditScore: 750,
-    grossMonthlyIncome: 5000,
-    monthlyCreditCardPayment: 100,
-    homeAppraisedValue: 250000,
-    downPaymentAmount: 50000,
-  });
-
+  const newData = new User(req.body);
   try {
     await newData.save();
     res.json({ message: "Data saved successfully" });

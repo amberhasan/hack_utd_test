@@ -12,6 +12,9 @@ import Axios from "axios";
 import calculateMortgage from "./calculateMortgage";
 import MortgageDecisionLetter from "./MortgageDecisionLetter";
 import DataGraph from "./DataGraph";
+import HomeOwnershipReadiness from "./HomeOwnershipReadiness";
+import IncomeDebtComparison from "./IncomeDebtComparison";
+import CreditScoreDistribution from "./CreditScoreDistribution";
 
 function App() {
   const [activeSegment, setActiveSegment] = useState("form"); // 'form' or 'discover'
@@ -20,13 +23,68 @@ function App() {
     setActiveSegment(segment);
   };
 
+  const userData = [
+    {
+      id: "1",
+      firstName: "Alice",
+      lastName: "Smith",
+      email: "alice.smith@example.com",
+      age: 28,
+      monthlyCarPayment: 300,
+      monthlyStudentLoanPayment: 200,
+      monthlyMortgagePayment: 1000,
+      creditScore: 720,
+      grossMonthlyIncome: 5000,
+      monthlyCreditCardPayment: 150,
+      homeAppraisedValue: 250000,
+      downPaymentAmount: 50000,
+    },
+    {
+      id: "2",
+      firstName: "Bob",
+      lastName: "Johnson",
+      email: "bob.johnson@example.com",
+      age: 35,
+      monthlyCarPayment: 250,
+      monthlyStudentLoanPayment: 0,
+      monthlyMortgagePayment: 800,
+      creditScore: 680,
+      grossMonthlyIncome: 4000,
+      monthlyCreditCardPayment: 100,
+      homeAppraisedValue: 180000,
+      downPaymentAmount: 36000,
+    },
+    {
+      id: "3",
+      firstName: "Carol",
+      lastName: "Williams",
+      email: "carol.williams@example.com",
+      age: 40,
+      monthlyCarPayment: 0,
+      monthlyStudentLoanPayment: 150,
+      monthlyMortgagePayment: 1200,
+      creditScore: 750,
+      grossMonthlyIncome: 7000,
+      monthlyCreditCardPayment: 200,
+      homeAppraisedValue: 300000,
+      downPaymentAmount: 60000,
+    },
+    // ... more user objects
+  ];
+
   const renderContent = () => {
     if (activeSegment === "form") {
       // Render form steps
       return renderStep();
     } else if (activeSegment === "discover") {
       // Render Discover segment with the graph
-      return <DataGraph />;
+      return (
+        <div>
+          <CreditScoreDistribution userData={userData} />
+          <IncomeDebtComparison userData={userData} />
+          <HomeOwnershipReadiness userData={userData} />
+        </div>
+      );
     }
   };
   const [listings, setListings] = useState([]);

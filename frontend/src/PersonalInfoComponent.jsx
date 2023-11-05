@@ -12,6 +12,7 @@ const PersonalInfoComponent = (props) => {
           <input
             type="text"
             name="firstName"
+            id="firstName"
             placeholder="👤 First Name"
             value={props.formData.firstName}
             onChange={props.handleChange}
@@ -22,6 +23,7 @@ const PersonalInfoComponent = (props) => {
           <input
             type="text"
             name="lastName"
+            id="lastName"
             placeholder="👤 Last Name"
             value={props.formData.lastName}
             onChange={props.handleChange}
