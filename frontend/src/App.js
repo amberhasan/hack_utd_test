@@ -9,6 +9,8 @@ import MonthlyDebtComponent from "./MonthlyDebtComponent";
 import HomeFinancesComponent from "./HomeFinancesComponent";
 import UserIncomeCreditScore from "./UserIncomeCreditScore";
 import Axios from "axios";
+import calculateMortgage from "./calculateMortgage";
+import MortgageDecisionLetter from "./MortgageDecisionLetter";
 
 function App() {
   // State hooks for form inputs
@@ -57,41 +59,15 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const firstName = formData.firstName;
-    const lastName = formData.lastName;
-    const email = formData.email;
-    const age = parseInt(formData.age);
-    const monthlyCarPayment = parseFloat(formData.carPayment);
-    const monthlyStudentLoanPayment = parseFloat(formData.studentLoanPayment);
-    const monthlyMortgagePayment = parseFloat(formData.mortgagePayment);
-    const creditScore = parseInt(formData.creditScore);
-    const grossMonthlyIncome = parseFloat(formData.monthlyIncome);
-    const monthlyCreditCardPayment = parseFloat(formData.creditCardPayment);
-    const homeAppraisedValue = parseFloat(formData.homeAppraisedValue);
-    const downPaymentAmount = parseFloat(formData.downPaymentAmount);
-
-    const ltv =
-      ((homeAppraisedValue - downPaymentAmount) / downPaymentAmount) * 100;
-    const dti =
-      ((monthlyCarPayment +
-        monthlyStudentLoanPayment +
-        monthlyMortgagePayment +
-        monthlyCreditCardPayment) /
-        grossMonthlyIncome) *
-      100;
-    const fedti = (monthlyMortgagePayment / grossMonthlyIncome) * 100;
-    const isApproved = creditScore >= 640 && ltv < 80 && dti < 36 && fedti < 28;
+    const { ltv, dti, fedti, canBuyHouse, message } =
+      calculateMortgage(formData);
 
     try {
       const response = await Axios.post(
         "http://localhost:3001/api/submitData",
-        formData
-      ); // Updated URL
-      if (response.status === 200) {
-        alert(JSON.stringify(formData, null, 2));
-      } else {
-        alert("Error saving data");
-      }
+        { ...formData, ltv, dti, fedti, canBuyHouse } // TODO - add to schema, Include the calculated values if needed for the backend
+      );
+      alert(JSON.stringify(`${message}`));
     } catch (error) {
       console.error("Error:", error);
       alert("Error saving data");
