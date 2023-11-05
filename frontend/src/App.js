@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./MonthlyDebtComponent.css";
 import "./HomeFinancesComponent.css";
@@ -12,6 +12,28 @@ import Axios from "axios";
 
 function App() {
   // State hooks for form inputs
+
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    console.log("Making request to server...");
+    fetch("http://localhost:3001/listings")
+      .then((res) => {
+        console.log("Received response from server", res);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Data fetched successfully:", data);
+        setListings(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
