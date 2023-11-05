@@ -23,7 +23,7 @@ const UserIncomeCreditScore = ({ formData, handleChange }) => {
           type="text"
           name="monthlyIncome"
           placeholder="💸 Monthly Income"
-          value={formData.lastName}
+          value={formData.monthlyIncome}
           onChange={handleChange}
           required
         />
