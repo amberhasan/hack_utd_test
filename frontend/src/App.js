@@ -94,15 +94,18 @@ function App() {
     }
 
     try {
-      const response = await Axios.post("http://localhost:3001/home", formData);
+      const response = await Axios.post(
+        "http://localhost:3001/api/submitData",
+        formData
+      ); // Updated URL
       if (response.status === 200) {
-        alert("Successful insert");
+        alert("Data saved successfully");
       } else {
-        alert("Error inserting data");
+        alert("Error saving data");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Error inserting data");
+      alert("Error saving data");
     }
   };
 
@@ -132,7 +135,6 @@ function App() {
     }
   };
 
-  // Conditional rendering based on the current step
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -146,6 +148,11 @@ function App() {
               formData={formData}
               handleChange={handleChange}
             />
+            <div className="buttons-container">
+              <button className="next-prev-buttons" onClick={nextStep}>
+                Next
+              </button>
+            </div>
           </div>
         );
 
@@ -160,10 +167,18 @@ function App() {
               formData={formData}
               handleChange={handleChange}
             />
+            <div className="buttons-container">
+              <button className="next-prev-buttons" onClick={prevStep}>
+                Back
+              </button>
+              <button type="submit" className="submit-button">
+                Submit
+              </button>
+            </div>
           </div>
         );
       default:
-        return null;
+        return <div>Hello</div>;
     }
   };
 
@@ -172,14 +187,6 @@ function App() {
       <h1>Home Buying Readiness Form</h1>
       <form onSubmit={handleSubmit} className="form">
         {renderStep()}
-        <div className="buttons-container">
-          <button className="next-prev-buttons" onClick={prevStep}>
-            &lt;
-          </button>
-          <button className="next-prev-buttons" onClick={nextStep}>
-            &gt;
-          </button>
-        </div>
       </form>
     </div>
   );
