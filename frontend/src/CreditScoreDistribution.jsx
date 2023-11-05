@@ -66,15 +66,6 @@ const CreditScoreDistribution = ({ userData }) => {
         <Tooltip />
         <Legend />
         <Bar dataKey="creditScore" fill="#8884d8" name="Credit Score" />
-        <text
-          x={0}
-          y={20}
-          fontSize="20"
-          textAnchor="left"
-          dominantBaseline="hanging"
-        >
-          Credit Score Distribution
-        </text>
       </BarChart>
     </ResponsiveContainer>
   );

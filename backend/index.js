@@ -80,7 +80,7 @@ app.post("/api/submitData", async (req, res) => {
   const newData = new User(req.body);
   try {
     await newData.save();
-    res.json({ message: "Data saved successfully" });
+    res.json({ message: "" });
   } catch (error) {
     res.status(500).json({ error: "An error occurred while saving data" });
   }

@@ -68,15 +68,6 @@ const IncomeDebtComparison = ({ userData }) => {
           fill="#8884d8"
           name="Total Monthly Debt"
         />
-        <text
-          x={0}
-          y={20}
-          fontSize="20"
-          textAnchor="left"
-          dominantBaseline="hanging"
-        >
-          Income to Debt Comparison
-        </text>
       </BarChart>
     </ResponsiveContainer>
   );

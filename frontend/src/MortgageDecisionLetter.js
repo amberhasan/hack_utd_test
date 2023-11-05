@@ -53,11 +53,7 @@ function MortgageDecisionLetter({
               We regret to inform you that your mortgage application has been
               declined.
             </p>
-            {message && (
-              <p>
-                <strong>Reason:</strong> {message}
-              </p>
-            )}
+
             <ul style={listStyle}>
               {creditScore < 640 && (
                 <li>
@@ -96,6 +92,10 @@ function MortgageDecisionLetter({
                 </strong>
               </p>
             )}
+            <p>
+              Please check out this link for more resources on homebuyer
+              readiness. https://www.fanniemae.com/education
+            </p>
           </>
         )}
       </div>
