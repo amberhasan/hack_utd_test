@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
 
 // Database configuration and connection setup
 const db = require("./db"); // This will run your database connection code
@@ -34,6 +35,14 @@ const userSchema = new mongoose.Schema({
 // The third parameter 'users' specifies the exact name of the collection in MongoDB
 const User = mongoose.model("User", userSchema, "users");
 
+// Set up nodemailer transport here
+const transporter = nodemailer.createTransport({
+  service: "gmail", // Replace with your email provider
+  auth: {
+    user: "amber.hasan@gmail.com", // Your email
+    pass: "EmailOnly", // Your password
+  },
+});
 // http://localhost:3001/users
 app.get("/users", async (req, res) => {
   try {
@@ -44,6 +53,29 @@ app.get("/users", async (req, res) => {
   }
 });
 
+//http://localhost:3001/api/send-email
+
+app.post("/api/send-email", (req, res) => {
+  const { to, subject, text } = req.body;
+
+  const mailOptions = {
+    from: "amber.hasan@gmail.com", // Sender address
+    to: to, // List of recipients
+    subject: subject, // Subject line
+    text: text, // Plain text body
+  };
+
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log(err);
+      res.status(500).send(`Error sending email ${err}`);
+    } else {
+      console.log(info);
+      res.status(200).send("Email sent");
+    }
+  });
+});
+//http://localhost:3001/api/submitData
 app.post("/api/submitData", async (req, res) => {
   // const newData = new User(req.body);
   const newData = new User({

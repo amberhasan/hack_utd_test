@@ -80,6 +80,19 @@ function App() {
     const { ltv, dti, fedti, canBuyHouse, message } =
       calculateMortgage(formData);
 
+    // Function to send email
+    const sendEmail = async () => {
+      try {
+        await Axios.post("http://localhost:3001/api/send-email", {
+          to: "amber.hasan@gmail.com", // Recipient's email address
+          subject: "Hello World",
+          text: "This is your message",
+        });
+        console.log("Email sent successfully");
+      } catch (error) {
+        console.error("Error sending email:", error);
+      }
+    };
     try {
       const response = await Axios.post(
         "http://localhost:3001/api/submitData",
