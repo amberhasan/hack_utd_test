@@ -28,6 +28,16 @@ const UserIncomeCreditScore = ({ formData, handleChange }) => {
           required
         />
       </div>
+      <div>
+        <input
+          type="text"
+          name="monthlyMortgagePayment"
+          placeholder="🏠 Estimated Monthly Mortgage"
+          value={formData.monthlyMortgagePayment}
+          onChange={handleChange}
+          required
+        />
+      </div>
     </div>
   );
 };
