@@ -62,7 +62,6 @@ function App() {
     monthlyCreditCardPayment: "",
     homeAppraisedValue: "",
     downPaymentAmount: "",
-    monthlyMortgagePayment: "",
   });
 
   const [mortgageDecision, setMortgageDecision] = useState({

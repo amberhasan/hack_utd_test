@@ -21,9 +21,9 @@ const UserIncomeCreditScore = ({ formData, handleChange }) => {
       <div>
         <input
           type="text"
-          name="monthlyIncome"
+          name="grossMonthlyIncome"
           placeholder="💸 Monthly Income"
-          value={formData.monthlyIncome}
+          value={formData.grossMonthlyIncome}
           onChange={handleChange}
           required
         />

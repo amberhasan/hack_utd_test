@@ -5,14 +5,14 @@ const MonthlyDebtComponent = ({ formData, handleChange }) => {
   return (
     <div className="debt-container">
       <div className="input-group">
-        <label htmlFor="carPayment" className="input-label">
+        <label htmlFor="monthlyCarPayment" className="input-label">
           🚗 Car Payment
         </label>
         <input
           className="input-field"
           type="number"
-          id="carPayment"
-          name="carPayment"
+          id="monthlyCarPayment"
+          name="monthlyCarPayment"
           placeholder="e.g., 300"
           value={formData.carPayment}
           onChange={handleChange}
@@ -20,16 +20,16 @@ const MonthlyDebtComponent = ({ formData, handleChange }) => {
         />
       </div>
       <div className="input-group">
-        <label htmlFor="studentLoanPayment" className="input-label">
+        <label htmlFor="monthlyStudentLoanPayment" className="input-label">
           🎓 Student Loan Payment
         </label>
         <input
           className="input-field"
           type="number"
-          id="studentLoanPayment"
-          name="studentLoanPayment"
+          id="monthlyStudentLoanPayment"
+          name="monthlyStudentLoanPayment"
           placeholder="e.g., 150"
-          value={formData.studentLoanPayment}
+          value={formData.monthlyStudentLoanPayment}
           onChange={handleChange}
           required
         />
