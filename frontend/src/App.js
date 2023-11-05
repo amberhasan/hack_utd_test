@@ -164,6 +164,10 @@ function App() {
           <MortgageDecisionLetter
             canBuyHouse={mortgageDecision.canBuyHouse}
             message={mortgageDecision.message}
+            ltv={mortgageDecision.ltv}
+            dti={mortgageDecision.dti}
+            fedti={mortgageDecision.fedti}
+            creditScore={formData.creditScore}
           />
         );
 
