@@ -1,13 +1,14 @@
-import React, { View, useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import "./MonthlyDebtComponent.css"; // Make sure the path is correct
-import "./HomeFinancesComponent.css"; // Make sure the path is correct
-import "./PersonalInfoComponent.css"; // Make sure the path is correct
-import "./UserIncomeCreditScore.css"; // Make sure the path is correct
-import PersonalInfoComponent from "./PersonalInfoComponent"; // Adjust the path as necessary
+import "./MonthlyDebtComponent.css";
+import "./HomeFinancesComponent.css";
+import "./PersonalInfoComponent.css";
+import "./UserIncomeCreditScore.css";
+import PersonalInfoComponent from "./PersonalInfoComponent";
 import MonthlyDebtComponent from "./MonthlyDebtComponent";
 import HomeFinancesComponent from "./HomeFinancesComponent";
 import UserIncomeCreditScore from "./UserIncomeCreditScore";
+import Axios from "axios";
 
 function App() {
   // State hooks for form inputs
@@ -30,8 +31,8 @@ function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    if (e) e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const creditScore = parseInt(formData.creditScore);
     const homeValue = parseFloat(formData.homeValue);
@@ -69,8 +70,17 @@ function App() {
       return;
     }
 
-    // If all validations pass
-    alert("You are approved!");
+    try {
+      const response = await Axios.post("http://localhost:3001/home", formData);
+      if (response.status === 200) {
+        alert("Successful insert");
+      } else {
+        alert("Error inserting data");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error inserting data");
+    }
   };
 
   // New state for tracking the current form step
@@ -137,11 +147,8 @@ function App() {
   return (
     <div className="App">
       <h1>Home Buying Readiness Form</h1>
-      <form onSubmit={(e) => e.preventDefault()} className="form">
-        {/* Render the current step */}
+      <form onSubmit={handleSubmit} className="form">
         {renderStep()}
-
-        {/* Render the navigation buttons */}
         <div className="buttons-container">
           <button className="next-prev-buttons" onClick={prevStep}>
             &lt;
