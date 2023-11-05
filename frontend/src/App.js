@@ -166,7 +166,7 @@ function App() {
               >
                 Back
               </button>
-              <button type="submit" className="submit-button">
+              <button type="submit" className="next-prev-buttons submit-button">
                 Submit
               </button>
             </div>

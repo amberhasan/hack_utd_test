@@ -108,6 +108,25 @@ h2 {
   padding: 20px;
 }
 
+/* Make sure the submit button is styled the same as the next-prev-buttons */
+.submit-button {
+  background-color: #007bff; /* Same blue background */
+  color: white; /* White text */
+  border: 1px solid transparent; /* No border visible */
+  padding: 0.3rem 0.75rem; /* Same padding */
+  font-size: 1rem; /* Same font size */
+  line-height: 1.5;
+  border-radius: 0.25rem; /* Same border radius */
+  cursor: pointer;
+  display: inline-block; /* This allows the button to only take up as much width as it needs */
+  width: auto; /* The width adjusts to the content */
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* You could also just add the .next-prev-buttons class directly to your submit button in the JSX if it's supposed to look exactly the same */
+
 h1 {
   color: #333;
 }
