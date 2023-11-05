@@ -11,12 +11,12 @@ import UserIncomeCreditScore from "./UserIncomeCreditScore";
 import Axios from "axios";
 import calculateMortgage from "./calculateMortgage";
 import MortgageDecisionLetter from "./MortgageDecisionLetter";
+import DataGraph from "./DataGraph";
 
 function App() {
   // State hooks for form inputs
 
   const [listings, setListings] = useState([]);
-
   //GET works
   useEffect(() => {
     console.log("Making request to server...");
@@ -114,6 +114,7 @@ function App() {
       case 1:
         return (
           <div>
+            <DataGraph />;
             <PersonalInfoComponent
               formData={formData}
               handleChange={handleChange}
