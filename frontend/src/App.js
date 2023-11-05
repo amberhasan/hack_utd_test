@@ -15,6 +15,7 @@ function App() {
 
   const [listings, setListings] = useState([]);
 
+  //GET works
   useEffect(() => {
     console.log("Making request to server...");
     fetch("http://localhost:3001/listings")

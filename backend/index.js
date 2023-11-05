@@ -13,8 +13,8 @@ app.use(express.json());
 const PORT = process.env.PORT || 3001;
 app.use(bodyParser.json());
 
-// Define a Mongoose schema for the listingsAndReviews collection
-const listingSchema = new mongoose.Schema({
+// Define a Mongoose schema for the users collection
+const userSchema = new mongoose.Schema({
   id: String,
   name: String,
   email: String,
@@ -30,22 +30,21 @@ const listingSchema = new mongoose.Schema({
 });
 
 // Create a Mongoose model based on the schema
-// The third parameter 'listingsAndReviews' specifies the exact name of the collection in MongoDB
-const Listing = mongoose.model("Listing", listingSchema, "listingsAndReviews");
+// The third parameter 'users' specifies the exact name of the collection in MongoDB
+const User = mongoose.model("User", userSchema, "users");
 
-// http://localhost:3001/listings
-app.get("/listings", async (req, res) => {
+// http://localhost:3001/users
+app.get("/users", async (req, res) => {
   try {
-    const listings = await Listing.find();
-    res.json(listings);
+    const users = await User.find();
+    res.json(users);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching listings", error });
+    res.status(500).json({ message: "Error fetching users", error });
   }
 });
 
 app.post("/api/submitData", async (req, res) => {
-  const newData = new Listing(req.body);
-
+  const newData = new User(req.body);
   try {
     await newData.save();
     res.json({ message: "Data saved successfully" });

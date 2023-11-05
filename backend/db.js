@@ -6,7 +6,7 @@ const connectToMongoDB = async () => {
   try {
     // Replace '<db_url>' with the actual MongoDB connection URL and include the database name
     const DB_URL =
-      "mongodb+srv://amberhasan:Testing123!!@cluster0.qvymich.mongodb.net/sample_airbnb";
+      "mongodb+srv://amberhasan:Testing123!!@cluster0.qvymich.mongodb.net/finances";
     // Connect to the MongoDB database
     await mongoose.connect(DB_URL);
 
